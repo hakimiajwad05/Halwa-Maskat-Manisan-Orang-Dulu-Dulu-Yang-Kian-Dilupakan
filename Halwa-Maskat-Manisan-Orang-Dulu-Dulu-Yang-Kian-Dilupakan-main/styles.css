@@ -14,4 +14,36 @@ ol {background-color: magenta;
 	border-top-style: dotted;
 	border-bottom-style: dashed;
 	padding-top: 5px}
+	
+nav ul {
+	background-color: yellow;
+	border: solid 1px;
+	list-style-type:none;
+	padding:0px;
+	margin:0px;
+	overflow:hidden;
+}
 
+nav a{
+	text-decoration:none;
+	color:brown;
+	padding:10px;
+	display:block;
+	text-align:center;
+}
+
+nav a:hover{
+	background-color:green;
+}
+
+nav li{
+float:left}
+
+.bawah ul{
+background-color:lightblue;}
+
+.bawah li{
+float: right;}
+
+.bawah a:hover{
+background-color:black;}
