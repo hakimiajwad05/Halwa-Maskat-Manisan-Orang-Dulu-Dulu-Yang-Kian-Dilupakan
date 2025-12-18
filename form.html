@@ -1,83 +1,119 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Borang Maklum Balas</title>
-	</head>
-	
+</head>
+
 <body>
+
 <h1>Welcome</h1>
 <p>Fill your information</p>
 
-<form action= "index.php" method= "POST" style="background-color:yellow; color: blue>
-	<label for="name" style="margin:1.5px: color blue;
-	background-color:yellow">">Name</label>
+<button onclick="mula()">START</button>
+
+<form onsubmit="hantar(); return false;" style="background-color: yellow; color: blue;">
+
+	<label for="name">Name</label>
 	<input type="text" id="name" required placeholder="Nama Penuh">
-	
-	<br>
+	<br><br>
+
 	<label for="phone">Phone Number</label>
-	<input type="phone" id="phone">
-	
-	
-	
-	<br>
-	<label for= "pass">Password</label>
-	<input type= "password" id="pass" required>
-	
-	<br>
-	<label for= "email">Email</label>
-	<input type= "email" id="email" required>
-	
-	<br>
-	<label for= "category">Category:</label>
-		<label for= "Student">Student</label>
-		<input type= "radio" id="Student" name="category">
-		<label for= "lecture">Lecturer</label>
-		<input type= "radio" id="Lecturer" name="category">
-		<label for= "visitor">Visitor</label>
-		<input type= "radio" id="visitor" name="category">
-	<br>
-	
+	<input type="tel" id="phone">
+	<br><br>
+
+	<label for="pass">Password</label>
+	<input type="password" id="pass" required>
+	<br><br>
+
+	<label for="email">Email</label>
+	<input type="email" id="email" required placeholder="Masukkan dengan @">
+	<br><br>
+
+	<label>Category:</label><br>
+	<input type="radio" id="student" name="category">
+	<label for="student">Student</label>
+
+	<input type="radio" id="lecturer" name="category">
+	<label for="lecturer">Lecturer</label>
+
+	<input type="radio" id="visitor" name="category">
+	<label for="visitor">Visitor</label>
+	<br><br>
+
 	<label for="purpose">Purpose</label>
 	<select id="purpose">
-		<option value="a"> To complaint</option>
-		<option value="a"> To give money</option>
-		<option value="a"> To ask money</option>
-	<select><br>
-	
+		<option value="complaint">To complaint</option>
+		<option value="donate">To give money</option>
+		<option value="request">To ask money</option>
+	</select>
+	<br><br>
+
 	<label for="date">Date</label>
 	<input type="date" id="date">
+
 	<label for="time">Time</label>
 	<input type="time" id="time">
-	<br>
+	<br><br>
+
 	<label for="datetime">Date and Time</label>
 	<input type="datetime-local" id="datetime">
-	
-	<br>
+	<br><br>
+
 	<label for="agree">Do you agree with the terms and conditions?</label>
 	<input type="checkbox" id="agree">
-	
-	<br>
+	<br><br>
+
 	<label for="proof">Upload the evidence</label><br>
 	<input type="file" id="proof">
-	
-	<br>
+	<br><br>
+
 	<label for="complaint">Write your suggestions</label><br>
 	<textarea id="complaint" rows="5" cols="30"></textarea>
-	
-	<br>
+	<br><br>
+
 	<label for="color">Favorite Color</label>
 	<input type="color" id="color">
-	
-	<br>
-	<label for="color">Rate our Service</label><br>
-	<input type="range" id="rating" min="0" max=100">
-	
 	<br><br>
-	<input type= "Submit">
-	<input type= "Reset">
-	
-	
-<form>
+
+	<label for="rating">Rate our Service</label><br>
+	<input type="range" id="rating" min="0" max="100">
+	<br><br>
+
+	<input type="submit" value="SEND">
+	<input type="reset">
+
+</form>
+
+<hr>
+<h3> Submitted Info </h3>
+<p id="result"></p>
+
+<script>
+alert("Selamat Datang");
+
+function mula() {
+	alert("Boleh start isi borang. Tunggu apa lagi!");
+}
+
+function hantar() {	
+	var nama = document.getElementById("name").value;
+	var fon = document.getElementById("phone").value;
+	var email = document.getElementById("email").value;
+
+	alert(
+		"Terima Kasih " + nama +
+		"\nKami akan menghubungi anda di " + fon +
+		" atau " + email
+	);
+
+	document.getElementById("result").innerHTML =
+		"Terima Kasih <b>" + nama + "</b>.<br>" +
+		"Kami akan menghubungi anda di " + fon + " atau " + email + ".";
+}
+</script>
+
 
 
 </body>
 </html>
+
