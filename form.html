@@ -2,6 +2,54 @@
 <html>
 <head>
 	<title>Borang Maklum Balas</title>
+
+	<style>
+	body {
+		background-color: #f0f0f0;
+		font-family: Arial;
+	}
+
+	form {
+		background-color: yellow;
+		color: blue;
+		border: 5px solid black;
+		padding: 20px;
+		width: 500px;
+		margin: auto;
+		border-radius: 10px;
+	}
+
+	input, select, textarea {
+		border: 2px solid black;
+		padding: 8px;
+		margin-bottom: 12px;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	input[type="radio"],
+	input[type="file"],
+	input[type="color"],
+	input[type="range"] {
+		width: auto;
+	}
+
+	input[type="submit"],
+	input[type="reset"] {
+		width: auto;
+		padding: 8px 20px;
+		cursor: pointer;
+	}
+
+	#result {
+		width: 500px;
+		margin: auto;
+		background: purple;
+		padding: 15px;
+		border: 2px dashed gray;
+		color: white;
+	}
+	</style>
 </head>
 
 <body>
@@ -9,74 +57,63 @@
 <h1>Welcome</h1>
 <p>Fill your information</p>
 
-<button onclick="mula()">START</button>
+<button onclick="mula()">START</button><br><br>
+<button onclick="darkmode()" style="background-color:darkblue; color: yellow">Dark Mode
+</button>
+<button onclick="lightmode()" style="background-color:yellow; color: black">Light Mode
+</button>
 
-<form onsubmit="hantar(); return false;" style="background-color: yellow; color: blue;">
+<br><br>
 
-	<label for="name">Name</label>
+<form id="form" onsubmit="hantar(); return false;">
+
+	<label>Name</label>
 	<input type="text" id="name" required placeholder="Nama Penuh">
-	<br><br>
 
-	<label for="phone">Phone Number</label>
+	<label>Phone Number</label>
 	<input type="tel" id="phone">
-	<br><br>
 
-	<label for="pass">Password</label>
+	<label>Password</label>
 	<input type="password" id="pass" required>
-	<br><br>
 
-	<label for="email">Email</label>
+	<label>Email</label>
 	<input type="email" id="email" required placeholder="Masukkan dengan @">
+
+	<label>Category</label><br>
+	<input type="radio" name="category"> Student
+	<input type="radio" name="category"> Lecturer
+	<input type="radio" name="category"> Visitor
 	<br><br>
 
-	<label>Category:</label><br>
-	<input type="radio" id="student" name="category">
-	<label for="student">Student</label>
-
-	<input type="radio" id="lecturer" name="category">
-	<label for="lecturer">Lecturer</label>
-
-	<input type="radio" id="visitor" name="category">
-	<label for="visitor">Visitor</label>
-	<br><br>
-
-	<label for="purpose">Purpose</label>
+	<label>Purpose</label>
 	<select id="purpose">
-		<option value="complaint">To complaint</option>
-		<option value="donate">To give money</option>
-		<option value="request">To ask money</option>
+		<option>To complaint</option>
+		<option>To give money</option>
+		<option>To ask money</option>
 	</select>
+
 	<br><br>
 
-	<label for="date">Date</label>
+	<label>Date</label>
 	<input type="date" id="date">
 
-	<label for="time">Time</label>
+	<label>Time</label>
 	<input type="time" id="time">
+
 	<br><br>
 
-	<label for="datetime">Date and Time</label>
-	<input type="datetime-local" id="datetime">
-	<br><br>
-
-	<label for="agree">Do you agree with the terms and conditions?</label>
-	<input type="checkbox" id="agree">
-	<br><br>
-
-	<label for="proof">Upload the evidence</label><br>
+	<label>Upload Evidence</label>
 	<input type="file" id="proof">
-	<br><br>
 
-	<label for="complaint">Write your suggestions</label><br>
-	<textarea id="complaint" rows="5" cols="30"></textarea>
-	<br><br>
+	<label>Write your suggestions</label>
+	<textarea id="complaint" rows="5"></textarea>
 
-	<label for="color">Favorite Color</label>
+	<label>Favorite Color</label>
 	<input type="color" id="color">
-	<br><br>
 
-	<label for="rating">Rate our Service</label><br>
+	<label>Rate our Service</label>
 	<input type="range" id="rating" min="0" max="100">
+
 	<br><br>
 
 	<input type="submit" value="SEND">
@@ -85,8 +122,9 @@
 </form>
 
 <hr>
-<h3> Submitted Info </h3>
-<p id="result"></p>
+
+<h3>Submitted Info</h3>
+<div id="result"></div>
 
 <script>
 alert("Selamat Datang");
@@ -95,25 +133,35 @@ function mula() {
 	alert("Boleh start isi borang. Tunggu apa lagi!");
 }
 
-function hantar() {	
+function hantar() {
 	var nama = document.getElementById("name").value;
 	var fon = document.getElementById("phone").value;
 	var email = document.getElementById("email").value;
-
-	alert(
-		"Terima Kasih " + nama +
-		"\nKami akan menghubungi anda di " + fon +
-		" atau " + email
-	);
+	var complaint = document.getElementById("complaint").value;
 
 	document.getElementById("result").innerHTML =
-		"Terima Kasih <b>" + nama + "</b>.<br>" +
-		"Kami akan menghubungi anda di " + fon + " atau " + email + ".";
+		"<b>Nama:</b> " + nama + "<br>" +
+		"<b>Phone:</b> " + fon + "<br>" +
+		"<b>Email:</b> " + email + "<br><br>" +
+		"<b>Cadangan / Aduan:</b><br>" + complaint;
+}
+
+function darkmode() {
+	document.body.style.backgroundColor = "#121212";
+	document.body.style.color = "white";
+
+	document.getElementById("form").style.backgroundColor = "#1e1e1e";
+	document.getElementById("form").style.color = "yellow";
+}
+
+function lightmode() {
+	document.body.style.backgroundColor = "#f0f0f0";
+	document.body.style.color = "black";
+
+	document.getElementById("form").style.backgroundColor = "yellow";
+	document.getElementById("form").style.color = "blue";
 }
 </script>
 
-
-
 </body>
 </html>
-
