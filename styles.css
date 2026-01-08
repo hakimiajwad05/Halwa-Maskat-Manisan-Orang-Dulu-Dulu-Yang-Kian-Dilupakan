@@ -1,0 +1,49 @@
+h1 {
+		background-color:#2627B6;
+		color:green; 
+		text-align:center;}
+body {
+		font-family:arial; 
+		background-color:#EFC3CA; }
+p {
+color :purple;}
+
+ol {background-color: magenta;
+	border: solid 5px;
+	border-color:blue;
+	border-top-style: dotted;
+	border-bottom-style: dashed;
+	padding-top: 5px}
+	
+nav ul {
+	background-color: yellow;
+	border: solid 1px;
+	list-style-type:none;
+	padding:0px;
+	margin:0px;
+	overflow:hidden;
+}
+
+nav a{
+	text-decoration:none;
+	color:brown;
+	padding:10px;
+	display:block;
+	text-align:center;
+}
+
+nav a:hover{
+	background-color:green;
+}
+
+nav li{
+float:left}
+
+.bawah ul{
+background-color:lightblue;}
+
+.bawah li{
+float: right;}
+
+.bawah a:hover{
+background-color:black;}

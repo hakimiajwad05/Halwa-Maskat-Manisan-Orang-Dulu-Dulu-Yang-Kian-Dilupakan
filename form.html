@@ -2,18 +2,12 @@
 <html>
 <head>
 	<title>Borang Maklum Balas</title>
-
-	<style>
-	body {
-		background-color: #f0f0f0;
-		font-family: Arial;
-	}
-
+<style>
 	form {
-		background-color: yellow;
+		background-color: white;
 		color: blue;
 		border: 5px solid black;
-		padding: 20px;
+		padding: 50px;
 		width: 500px;
 		margin: auto;
 		border-radius: 10px;
@@ -33,39 +27,27 @@
 	input[type="range"] {
 		width: auto;
 	}
-
-	input[type="submit"],
-	input[type="reset"] {
-		width: auto;
-		padding: 8px 20px;
-		cursor: pointer;
-	}
-
-	#result {
-		width: 500px;
-		margin: auto;
-		background: purple;
-		padding: 15px;
-		border: 2px dashed gray;
-		color: white;
-	}
-	</style>
+</style>
 </head>
 
 <body>
 
-<h1>Welcome</h1>
+<h1 id="welcome">Welcome</h1><br>
+
+<button onclick="welc()" style="font-size:12px">CHANGE THIS COLOR</button>
 <p>Fill your information</p>
 
 <button onclick="mula()">START</button><br><br>
-<button onclick="darkmode()" style="background-color:darkblue; color: yellow">Dark Mode
-</button>
-<button onclick="lightmode()" style="background-color:yellow; color: black">Light Mode
-</button>
+<button onclick="darkmode()" style="background-color:darkblue; color: yellow">Dark Mode</button>
+<button onclick="lightmode()" style="background-color:yellow; color: black">Light Mode</button>
 
 <br><br>
 
+<button onclick="LargeText()">LARGE TEXT</button>
+<button onclick="SmallText()">SMALL TEXT</button><br><br>
+
 <form id="form" onsubmit="hantar(); return false;">
+    <button type="button" onclick="borang()">CHANGE FORM COLOR</button><br><br> 
 
 	<label>Name</label>
 	<input type="text" id="name" required placeholder="Nama Penuh">
@@ -80,9 +62,9 @@
 	<input type="email" id="email" required placeholder="Masukkan dengan @">
 
 	<label>Category</label><br>
-	<input type="radio" name="category"> Student
-	<input type="radio" name="category"> Lecturer
-	<input type="radio" name="category"> Visitor
+	<input type="radio" name="category" value="Student"> Student
+	<input type="radio" name="category" value="Lecturer"> Lecturer
+	<input type="radio" name="category" value="Visitor"> Visitor
 	<br><br>
 
 	<label>Purpose</label>
@@ -93,7 +75,6 @@
 	</select>
 
 	<br><br>
-
 	<label>Date</label>
 	<input type="date" id="date">
 
@@ -101,7 +82,6 @@
 	<input type="time" id="time">
 
 	<br><br>
-
 	<label>Upload Evidence</label>
 	<input type="file" id="proof">
 
@@ -115,14 +95,11 @@
 	<input type="range" id="rating" min="0" max="100">
 
 	<br><br>
-
 	<input type="submit" value="SEND">
-	<input type="reset">
-
+	<input type="RESET">
 </form>
 
 <hr>
-
 <h3>Submitted Info</h3>
 <div id="result"></div>
 
@@ -133,23 +110,40 @@ function mula() {
 	alert("Boleh start isi borang. Tunggu apa lagi!");
 }
 
+function welc() {
+    var tajuk = document.getElementById("welcome");
+    tajuk.style.backgroundColor = "yellow"; 
+    tajuk.style.color = "black";           
+    tajuk.style.display = "inline";        
+}
+
+// ADJUSTED: Fungsi hantar sekarang ada popup alert
 function hantar() {
 	var nama = document.getElementById("name").value;
 	var fon = document.getElementById("phone").value;
 	var email = document.getElementById("email").value;
 	var complaint = document.getElementById("complaint").value;
+	var tujuan = document.getElementById("purpose").value;
 
+	// Paparan pada bahagian bawah (result)
 	document.getElementById("result").innerHTML =
 		"<b>Nama:</b> " + nama + "<br>" +
 		"<b>Phone:</b> " + fon + "<br>" +
 		"<b>Email:</b> " + email + "<br><br>" +
 		"<b>Cadangan / Aduan:</b><br>" + complaint;
+
+	// POPUP Alert yang anda minta
+	alert("INFO BERHASIL DIHANTAR!\n\n" + 
+	      "Nama: " + nama + "\n" + 
+	      "No Tel: " + fon + "\n" + 
+	      "Email: " + email + "\n" + 
+	      "Tujuan: " + tujuan + "\n" +
+	      "Aduan: " + complaint);
 }
 
 function darkmode() {
 	document.body.style.backgroundColor = "#121212";
 	document.body.style.color = "white";
-
 	document.getElementById("form").style.backgroundColor = "#1e1e1e";
 	document.getElementById("form").style.color = "yellow";
 }
@@ -157,9 +151,21 @@ function darkmode() {
 function lightmode() {
 	document.body.style.backgroundColor = "#f0f0f0";
 	document.body.style.color = "black";
-
 	document.getElementById("form").style.backgroundColor = "yellow";
 	document.getElementById("form").style.color = "blue";
+}
+
+function LargeText(){
+	document.getElementById("form").style.fontSize = "200%";
+}
+
+function SmallText(){
+	document.getElementById("form").style.fontSize = "100%";
+}
+
+function borang(){
+	document.getElementById("form").style.backgroundColor = "blue";
+	document.getElementById("form").style.color = "white";
 }
 </script>
 
